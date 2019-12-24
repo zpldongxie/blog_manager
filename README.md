@@ -5,67 +5,106 @@
 # 代码结构
 
 ```
-├── config                   # umi 配置，包含路由，构建等配置
-├── mock                     # 本地模拟数据
-├── public
-│   └── favicon.png          # Favicon
+├── public                                      # 静态资源
+│
 ├── src
-│   ├── assets               # 本地静态资源
-│   ├── components           # 业务通用组件
-│   ├── e2e                  # 集成测试用例
-│   ├── layouts              # 通用布局
-│   ├── models               # 全局 dva model
-│   ├── pages                # 业务页面入口和常用模板
-│   ├── services             # 后台接口服务
-│   ├── utils                # 工具库
-│   ├── locales              # 国际化资源
-│   ├── global.less          # 全局样式
-│   └── global.ts            # 全局 JS
-├── tests                    # 测试工具
+│   │
+│   ├── cat                                     # cat模块
+│   │
+│   ├── common                                  # 公共代码
+│   │     │
+│   │     ├── interceptor                       # 全局拦截器
+│   │     │       │
+│   │     │       ├── errors.interceptor.ts     # 异常拦截器
+│   │     │       │
+│   │     │       ├── logging.interceptor.ts    # 日志拦截器
+│   │     │       │
+│   │     │       ├── timeout.interceptor.ts    # 访问超时拦截器
+│   │     │       │
+│   │     │       └── transform.interceptor.ts  # 数据封闭拦截器
+│   │     │
+│   │     ├── middleware                        # 中间件
+│   │     │       │
+│   │     │       └── logger.middleware.ts      # 日志
+│   │     │
+│   │     ├── roles.decorator.ts                # 用户验证装饰器
+│   │     │
+│   │     └── roles.guard.ts                    # 认证保护
+│   │
+│   ├── app.controller.ts                       # 主路由
+│   │
+│   ├── app.module.ts                           # 主模块控制
+│   │
+│   ├── app.service.ts                          # 主服务
+│   │
+│   └── main.ts                                 # 应用主入口
+│
+├── views                                       # 页面模板
+│   │
+│   ├── layouts                                 # 通用布局
+│   │
+│   └── index.hbs                               # 主页
+│
 ├── README.md
+│
 └── package.json
 ```
 
-# 相关技术
+# nest 框架基本使用说明
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+</p>  
 
-该项目使用[Ant Design Pro](https://pro.ant.design)初始化。
+```
+nest new blog_manager           # 创建项目
+nest g controller cats          # 新建控制器
+nest g service cats             # 创建对应的服务
+nest g module cats              # 封闭一个module，在根module中导入
+```
+应该使用interface来维护对象，使用dto来约束传递的参数。
 
-## 提供的脚本
-
-Ant Design Pro 提供了一些有用的脚本，可帮助您快速启动和构建 Web 项目，代码样式检查和测试。
-
-package.json 中提供的脚本。
-
-### 启动项目
+## Installation
 
 ```bash
-npm start
+$ npm install
 ```
 
-### 构建项目
+## Running the app
 
 ```bash
-npm run build
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
 ```
 
-### 检查代码样式
+## Test
 
 ```bash
-npm run lint
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
 ```
 
-您还可以使用脚本自动修复某些 lint 错误：
+## Support
 
-```bash
-npm run lint:fix
-```
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-### 测试代码
+## Stay in touch
 
-```bash
-npm test
-```
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## 更多
+## License
 
-可以在[Ant Design Pro 官方网站](https://pro.ant.design)上查看完整文档。
+  Nest is [MIT licensed](LICENSE).
