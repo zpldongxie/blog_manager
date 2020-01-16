@@ -2,109 +2,92 @@
 
 个人博客管理后台
 
-# 代码结构
-
+## 代码结构
 ```
-├── public                                      # 静态资源
-│
+├── docs                   # 构建后的文件,支持github部署
+├── mock                   # 模拟数据
+├── public                 # 全局静态资源
 ├── src
-│   │
-│   ├── cat                                     # cat模块
-│   │
-│   ├── common                                  # 公共代码
-│   │     │
-│   │     ├── interceptor                       # 全局拦截器
-│   │     │       │
-│   │     │       ├── errors.interceptor.ts     # 异常拦截器
-│   │     │       │
-│   │     │       ├── logging.interceptor.ts    # 日志拦截器
-│   │     │       │
-│   │     │       ├── timeout.interceptor.ts    # 访问超时拦截器
-│   │     │       │
-│   │     │       └── transform.interceptor.ts  # 数据封闭拦截器
-│   │     │
-│   │     ├── middleware                        # 中间件
-│   │     │       │
-│   │     │       └── logger.middleware.ts      # 日志
-│   │     │
-│   │     ├── roles.decorator.ts                # 用户验证装饰器
-│   │     │
-│   │     └── roles.guard.ts                    # 认证保护
-│   │
-│   ├── app.controller.ts                       # 主路由
-│   │
-│   ├── app.module.ts                           # 主模块控制
-│   │
-│   ├── app.service.ts                          # 主服务
-│   │
-│   └── main.ts                                 # 应用主入口
-│
-├── views                                       # 页面模板
-│   │
-│   ├── layouts                                 # 通用布局
-│   │
-│   └── index.hbs                               # 主页
-│
-├── README.md
-│
-└── package.json
+│    ├── assets            # 静态文件文件夹
+│    ├── common            # 公共配置
+│    ├── components        # 通用组件
+│    ├── layouts           # 通用布局
+│    ├── routes            # 路由
+│    ├── services          # 后台接口服务
+│    ├── utils             # 工具库
+│    ├── views             # 页面内容
+│    ├── App.css
+│    ├── App.js            # 主组件
+│    ├── App.test.js
+│    ├── index.css
+│    ├── index.js          # 应用入口
+│    ├── router.js         # 主路由
+│    ├── serviceWorker.js
+│    └── setupProxy.js     # 反向代理插件配置
+└── config-overrides.js    # 通过react-app-rewired实现覆盖默认配置
 ```
 
-# nest 框架基本使用说明
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>  
+该项目使用[Create React App](https://github.com/facebook/create-react-app)启动。
 
+## 创建步骤
+### 使用typescript做为模板创建应用
 ```
-nest new blog_manager           # 创建项目
-nest g controller cats          # 新建控制器
-nest g service cats             # 创建对应的服务
-nest g module cats              # 封闭一个module，在根module中导入
-```
-应该使用interface来维护对象，使用dto来约束传递的参数。
-
-## Installation
-
-```bash
-$ npm install
+npx create-react-app blog_manager --template typescript
 ```
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+### 引入antd
+```
+npm i antd
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+### 使用react-app-rewired进行webpack相关配置
 ```
+npm i react-app-rewired customize-cra
+```
+### 使用babel-plugin-import实现按需加载
+```
+npm i babel-plugin-import
+```
+js 代码部分不使用这个插件也会有按需加载的效果。
 
-## Support
+## 可用脚本
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+在项目目录中，可以运行：
 
-## Stay in touch
+### `npm start`
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+在开发模式下运行应用程序。<br />
+打开[http：// localhost：3000](http：// localhost：3000)在浏览器中查看。
 
-## License
+如果进行编辑，页面将重新加载。<br />
+可以在控制台中看到所有lint错误。
 
-  Nest is [MIT licensed](LICENSE).
+### `npm test`
+
+在交互式监视模式下启动测试运行程序。<br />
+有关更多信息，请参见关于[running tests](https://facebook.github.io/create-react-app/docs/running-tests)的部分。
+
+### `npm run build`
+
+将要部署到生产环境的应用程序生成到“build”文件夹。<br />
+在生产模式下正确捆绑了React，并优化了构建以获得最佳性能。
+
+构建会对文件进行压缩和哈希混淆。<br />
+
+有关更多信息，请参见关于[deployment](https://facebook.github.io/create-react-app/docs/deployment)的部分。
+
+### `npm run eject`
+
+**注意：这是单向操作。 一旦进行 `eject`, 将不能回退!**
+
+如果您对构建工具和配置选择不满意，则可以随时`eject`。 此命令将从项目中删除单个构建依赖项。
+
+而是将所有配置文件和传递依赖项（Webpack，Babel，ESLint等）直接复制到您的项目中，以便您完全控制它们。除了`eject`以外的所有命令仍然可以使用，但是它们将指向复制的脚本，因此您可以对其进行调整。 至此，您可以对项目进行自主控制。
+
+并不是任何情况下都需要使用`eject`。
+
+## Learn More
+
+您可以在[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)中了解更多信息。
+
+要学习React，请查看[React documentation](https://reactjs.org/)。
