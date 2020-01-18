@@ -1,15 +1,15 @@
 import React from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Divider } from 'antd';
 import { Route, Link } from 'react-router-dom';
 
-import { MENULIST } from '../../common/constant'
+import { SCRIPTURL, MENULIST } from '../../common/constant'
 import loadable from '../../utils/loadable'
 
 import './index.less'
 
 const { Header, Content, Footer, Sider } = Layout;
 const IconFont = Icon.createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
+  scriptUrl: SCRIPTURL,
 });
 
 /**
@@ -18,8 +18,8 @@ const IconFont = Icon.createFromIconfontCN({
  * @returns
  */
 const getCurrentMenuIndex = () => {
-  const urlArr = window.location.pathname.split('/');
-  let key = urlArr.length > 1 ? urlArr[1] : Object.keys(MENULIST)[0];
+  let key = window.location.pathname.split('/')[1];
+  key = key === "" ? Object.keys(MENULIST)[0] : key;
   return MENULIST[key].index;
 }
 
@@ -73,12 +73,16 @@ const DefaultLayout: React.FC<Props> = (props: Props) => {
             }
           </div>
         </Content>
-        <Footer>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer>
+          <a href="https://blog.zhupengliang.cn" target="_blank" rel="noopener noreferrer">blog</a>
+          <Divider type="vertical" />
+          <a href="https://ant.design/index-cn" target="_blank" rel="noopener noreferrer">Ant Design</a>
+          <br/>
+          Zhu Pengliang ©{new Date().getFullYear()} Created by Ant Design <br/>
+        </Footer>
       </Layout>
     </Layout>
   )
 }
-
-interface State {}
 
 export default DefaultLayout;

@@ -8,6 +8,17 @@
       background: rgba(255, 255, 255, 0.2);
       margin    : 16px;
     }
+    .ant-menu {
+      .ant-menu-item {
+        .anticon {
+          font-size: 1.4rem;
+          vertical-align: middle;
+        }
+        .nav-text {
+          vertical-align: middle;
+        }
+      }
+    }
   }
   .ant-layout-header {
     height: @headerHeight;
@@ -19,5 +30,13 @@
   }
   .ant-layout-footer {
     height: @footerHeight;
+    padding: 1rem;
+    text-align: center;
+    .ant-divider {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    a {
+      color: rgba(0, 0, 0, 0.65);
+    }
   }
 }

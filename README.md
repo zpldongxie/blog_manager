@@ -4,27 +4,35 @@
 
 ## 代码结构
 ```
-├── docs                   # 构建后的文件,支持github部署
-├── mock                   # 模拟数据
-├── public                 # 全局静态资源
+├── docs                          # 构建后的文件,支持github部署
+├── mock                          # 模拟数据
+├── public                        # 全局静态资源
 ├── src
-│    ├── assets            # 静态文件文件夹
-│    ├── common            # 公共配置
-│    ├── components        # 通用组件
-│    ├── layouts           # 通用布局
-│    ├── routes            # 路由
-│    ├── services          # 后台接口服务
-│    ├── utils             # 工具库
-│    ├── views             # 页面内容
+│    ├── assets                   # 静态文件文件夹
+│    ├── common                   # 公共配置
+│    ├── components
+│    │      ├── ArticleManager    # 文章管理
+│    │      ├── CommentManager    # 评论管理
+│    │      ├── Dashboard         # 仪表盘
+│    │      ├── FileManager       # 文件管理
+│    │      ├── LableManager      # 标签管理
+│    │      ├── Login             # 登录
+│    │      ├── SysManager        # 系统管理
+│    │      └── UserManager       # 用户管理
+│    ├── layouts
+│    │      ├── Default           # 通用布局
+│    │      └── Login             # 登录页面布局
+│    ├── services                 # 后台接口服务
+│    ├── utils                    # 工具库
 │    ├── App.css
-│    ├── App.js            # 主组件
-│    ├── App.test.js
+│    ├── App.test.tsx
+│    ├── App.tsx                  # 主组件
 │    ├── index.css
-│    ├── index.js          # 应用入口
-│    ├── router.js         # 主路由
-│    ├── serviceWorker.js
-│    └── setupProxy.js     # 反向代理插件配置
-└── config-overrides.js    # 通过react-app-rewired实现覆盖默认配置
+│    ├── index.tsx                # 应用入口
+│    ├── logo.svg
+│    ├── serviceWorker.ts
+│    └── setupProxy.ts            # 反向代理插件配置
+└── config-overrides.js           # 通过react-app-rewired实现覆盖默认配置
 ```
 
 该项目使用[Create React App](https://github.com/facebook/create-react-app)启动。
