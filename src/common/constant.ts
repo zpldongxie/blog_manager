@@ -2,7 +2,7 @@
  * @description: 全局常量
  * @author: zpl
  * @Date: 2020-01-17 13:30:02
- * @LastEditTime: 2020-02-17 18:55:50
+ * @LastEditTime: 2020-02-17 19:51:51
  * @LastEditors: zpl
  */
 
@@ -67,6 +67,9 @@ const FREND_LINK = [{
 }, {
   name: 'AntV',
   link: 'https://antv.vision/zh'
+}, {
+  name: 'BizCharts',
+  link: 'https://bizcharts.net/products/bizCharts'
 }]
 
 export {
