@@ -22,9 +22,7 @@ interface UserInfo {
   email: string
 }
 
-interface Props {}
-
-const UserManager = (props: Props) => {
+const UserManager = () => {
   const [pageSize, setPageSize] = useState(10);
   const [pageIndex, setPageIndex] = useState(1);
   const [userList, setUserList] = useState([]);
@@ -85,8 +83,7 @@ const UserManager = (props: Props) => {
   }
 
   return (
-    <div>
-      用户管理
+    <div>      
       <Table columns={columns} dataSource={userList} pagination={pagination} />
     </div>
   )

@@ -62,27 +62,51 @@ js 代码部分不使用这个插件也会有按需加载的效果。
 
 在项目目录中，可以运行：
 
-### `npm start`
+---
 
-在开发模式下运行应用程序。<br />
+### `npm run start:dev`
+
+在开发模式下运行应用程序（使用开发环境配置）。<br />
 打开[http：// localhost：3000](http：// localhost：3000)在浏览器中查看。
 
 如果进行编辑，页面将重新加载。<br />
 可以在控制台中看到所有lint错误。
+
+---
+
+### `npm run start:pro`
+
+在开发模式下运行应用程序（使用生产环境配置）。<br />
+打开[http：// localhost：3000](http：// localhost：3000)在浏览器中查看。
+
+如果进行编辑，页面将重新加载。<br />
+可以在控制台中看到所有lint错误。
+
+---
 
 ### `npm test`
 
 在交互式监视模式下启动测试运行程序。<br />
 有关更多信息，请参见关于[running tests](https://facebook.github.io/create-react-app/docs/running-tests)的部分。
 
-### `npm run build`
+---
 
-将要部署到生产环境的应用程序生成到“build”文件夹。<br />
+### `npm run build:dev`
+
+用开发环境配置将要部署到生产环境的应用程序生成到“build”文件夹。通常用于开发环境部署测试。
+
+---
+
+### `npm run build:pro`
+
+用生产环境配置将要部署到生产环境的应用程序生成到“build”文件夹。通常用于生产环境部署。<br />
 在生产模式下正确捆绑了React，并优化了构建以获得最佳性能。
 
 构建会对文件进行压缩和哈希混淆。<br />
 
 有关更多信息，请参见关于[deployment](https://facebook.github.io/create-react-app/docs/deployment)的部分。
+
+---
 
 ### `npm run eject`
 
@@ -93,6 +117,8 @@ js 代码部分不使用这个插件也会有按需加载的效果。
 而是将所有配置文件和传递依赖项（Webpack，Babel，ESLint等）直接复制到您的项目中，以便您完全控制它们。除了`eject`以外的所有命令仍然可以使用，但是它们将指向复制的脚本，因此您可以对其进行调整。 至此，您可以对项目进行自主控制。
 
 并不是任何情况下都需要使用`eject`。
+
+---
 
 ## Learn More
 
