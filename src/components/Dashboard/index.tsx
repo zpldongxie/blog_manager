@@ -2,7 +2,7 @@
  * @description: 仪表盘
  * @author: zpl
  * @Date: 2020-01-16 12:20:36
- * @LastEditTime: 2020-02-17 21:29:12
+ * @LastEditTime: 2020-02-17 22:13:05
  * @LastEditors: zpl
  */
 import React from 'react';
@@ -17,7 +17,7 @@ const Dashboard: React.FC = () => {
   return (
     <div>
       <Row gutter={16}>
-        <Col className="gutter-row" span={12}>
+        <Col className="gutter-row" lg={24} xl={12} style={{overflow: 'auto'}}>
           <Chart height={400} data={interval.data} scale={interval.cols}>
             <Axis name="genre" title />
             <Axis name="sold" title />
@@ -26,7 +26,7 @@ const Dashboard: React.FC = () => {
             <Geom type="interval" position="genre*sold" color="genre" />
           </Chart>
         </Col>
-        <Col className="gutter-row" span={12}>
+        <Col className="gutter-row" lg={24} xl={12}>
           <Chart
             height={400}
             data={pie.data}

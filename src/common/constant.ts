@@ -2,11 +2,11 @@
  * @description: 全局常量
  * @author: zpl
  * @Date: 2020-01-17 13:30:02
- * @LastEditTime: 2020-02-17 19:51:51
+ * @LastEditTime: 2020-02-19 17:53:07
  * @LastEditors: zpl
  */
 
-const APP_NAME = '朱鹏亮的个人博客'
+const APP_NAME = '无为博客管理系统'
 
 // antd createFromIconfontCN方法引入iconfont.cn的项目图标链接
 const SCRIPTURL = "//at.alicdn.com/t/font_1617351_j1d06816829.js";

@@ -2,8 +2,8 @@
  * @description: 统一配置请求接口
  * @author: zpl
  * @Date: 2020-01-13 14:11:20
- * @LastEditTime : 2020-01-18 17:33:05
- * @LastEditors  : zpl
+ * @LastEditTime: 2020-02-21 19:42:46
+ * @LastEditors: zpl
  */
 
 let baseUrl = '/api';
@@ -18,5 +18,15 @@ export default {
   postLogout: '/logout',
   getUsers: '/users',
   getList: '/getList',
-  getContent: '/getContent'
+  getContent: '/getContent',
+  getAllTypes: '/type',
+  addType: '/type',
+  delOneType: '/type',
+  changeTypeNameUrl: '/type/changeName',
+  changeTypeColorUrl: '/type/changeColor',
+  getAllLables: '/lable',
+  addLable: '/lable',
+  delOneLable: '/lable',
+  changeLableNameUrl: '/lable/changeName',
+  changeLableColorUrl: '/lable/changeColor'
 };

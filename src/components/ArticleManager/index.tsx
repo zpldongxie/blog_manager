@@ -2,7 +2,7 @@
  * @description: 文章管理
  * @author: zpl
  * @Date: 2020-01-16 12:20:36
- * @LastEditTime: 2020-02-17 19:19:25
+ * @LastEditTime: 2020-02-20 15:41:48
  * @LastEditors: zpl
  */
 import React, { useState, useEffect } from 'react'
@@ -22,8 +22,8 @@ interface ArticleBaseInfo {
 }
 
 const ArticleManager: React.FC = () => {
-  const [pageIndex, setPageIndex] = useState(1);
-  const [pageSize, setPageSize] = useState(20);
+  // const [pageIndex, setPageIndex] = useState(1);
+  // const [pageSize, setPageSize] = useState(20);
   const [articleList, setArticleList] = useState([]);
 
   useEffect(() => {

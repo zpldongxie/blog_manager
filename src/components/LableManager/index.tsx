@@ -2,38 +2,37 @@
  * @description: 分类/标签管理
  * @author: zpl
  * @Date: 2020-01-16 12:20:36
- * @LastEditTime: 2020-01-16 13:28:45
+ * @LastEditTime: 2020-02-21 19:43:17
  * @LastEditors: zpl
  */
-import React, { Component } from 'react';
-import { Row, Col } from 'antd';
+import React from 'react';
+import api from '../../common/api';
 
-interface Props {}
-interface State {}
+import Group from './Group';
 
-export default class LableManager extends Component<Props, State> {
-  render() {
-    return (
-      <Row>
-      <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-      分类 / 标签管理
-      </Col>
-      <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-      分类 / 标签管理
-      </Col>
-      <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-      分类 / 标签管理
-      </Col>
-      <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-      分类 / 标签管理
-      </Col>
-      <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-      分类 / 标签管理
-      </Col>
-      <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-      分类 / 标签管理
-      </Col>
-    </Row>
-    )
-  }
+const LableManager: React.FC = () => {
+
+  return (
+    <div>
+      <Group
+        title='分类'
+        style={{marginTop: '1rem'}}
+        getAllUrl={api.getAllTypes}
+        addUrl={api.addType}
+        delOneUrl={api.delOneType}
+        changeNameUrl={api.changeTypeNameUrl}
+        changeColorUrl={api.changeTypeColorUrl}
+      />
+      <Group
+        title='标签'        
+        getAllUrl={api.getAllLables}
+        addUrl={api.addLable}
+        delOneUrl={api.delOneLable}
+        changeNameUrl={api.changeLableNameUrl}
+        changeColorUrl={api.changeLableColorUrl}
+      />
+    </div>
+  )
 }
+
+export default LableManager;

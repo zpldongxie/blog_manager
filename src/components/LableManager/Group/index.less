@@ -1,0 +1,39 @@
+@import '../../../common.less';
+
+.listCon {
+  margin-bottom: 1rem;
+
+  .ant-tag {
+    position: relative;
+    margin  : .5rem;
+
+    .ant-input-sm {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      height: auto;
+      line-height: 1rem;
+      & + .anticon-close {
+        display: none;
+      }
+    }
+  }
+}
+
+.ant-dropdown {
+  .ant-menu-root.ant-menu-vertical {
+    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow        : 0 2px 8px rgba(0, 0, 0, 0.15);
+    text-align        : center;
+
+    .ant-menu-item {
+      height     : auto;
+      line-height: initial;
+
+      .ant-tag {
+        margin: 0;
+      }
+    }
+  }
+}

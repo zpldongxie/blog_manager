@@ -2,7 +2,7 @@
  * @description: 用户管理
  * @author: zpl
  * @Date: 2020-01-16 12:20:36
- * @LastEditTime: 2020-01-19 12:09:02
+ * @LastEditTime: 2020-02-20 18:07:44
  * @LastEditors: zpl
  */
 import React, { useState, useEffect } from 'react';
@@ -23,8 +23,8 @@ interface UserInfo {
 }
 
 const UserManager = () => {
-  const [pageSize, setPageSize] = useState(10);
-  const [pageIndex, setPageIndex] = useState(1);
+  const pageSize = 2;
+  const pageIndex = 1;
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -79,11 +79,13 @@ const UserManager = () => {
     defaultPageSize: pageSize,
     defaultCurrent: pageIndex,
     total: userList.length,
-    hideOnSinglePage: true
+    hideOnSinglePage: true,
+    showQuickJumper: true,
+    showSizeChanger: true
   }
 
   return (
-    <div>      
+    <div>
       <Table columns={columns} dataSource={userList} pagination={pagination} />
     </div>
   )

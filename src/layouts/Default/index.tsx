@@ -3,7 +3,7 @@ import { Layout, Menu, Icon, Breadcrumb, Divider } from 'antd';
 import { Route, Link } from 'react-router-dom';
 
 import { SCRIPTURL, MENULIST } from '../../common/constant';
-import loadable from '../../utils/loadable';
+import { loading } from '../../components/Util';
 import CustomHeader from '../../components/CustomHeader';
 import CustomFooter from '../../components/CustomFooter';
 
@@ -73,26 +73,26 @@ const DefaultLayout: React.FC<Props> = (props: Props) => {
             }
           </Menu>
         </Sider>
-          <Content>
-            {CurrentBreadcrumb}
-            <Divider style={{ margin: '10px 0' }} />
-            <div className="mainCon">
-              {
-                Object.keys(MENULIST).map((key: string) => {
-                  const path = `${match.url}${key === 'dashboard' ? '' : key}`;
-                  const comp = loadable(() => import(`../../components/${MENULIST[key].comp}`));
-                  return <Route
-                    key={key}
-                    path={path}
-                    component={comp}
-                    exact
-                  />
-                })
-              }
-            </div>
-          </Content>
+        <Content>
+          {CurrentBreadcrumb}
+          <Divider style={{ margin: '10px 0' }} />
+          <div className="mainCon">
+            {
+              Object.keys(MENULIST).map((key: string) => {
+                const path = `${match.url}${key === 'dashboard' ? '' : key}`;
+                const comp = loading(() => import(`../../components/${MENULIST[key].comp}`));
+                return <Route
+                  key={key}
+                  path={path}
+                  component={comp}
+                  exact
+                />
+              })
+            }
+          </div>
+        </Content>
       </Layout>
-          <CustomFooter />
+      <CustomFooter />
     </Layout>
   )
 }
