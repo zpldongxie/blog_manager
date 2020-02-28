@@ -2,7 +2,7 @@
  * @description: 全局常量
  * @author: zpl
  * @Date: 2020-01-17 13:30:02
- * @LastEditTime: 2020-02-19 17:53:07
+ * @LastEditTime: 2020-02-25 20:07:05
  * @LastEditors: zpl
  */
 
@@ -24,6 +24,12 @@ const MENULIST: any = {
     "comp": "ArticleManager",
     "cName": "文章管理",
     "icon": "icon-wenzhangguanli"
+  },
+  "channelsManager": {
+    "index": "2",
+    "comp": "ChannelsManager",
+    "cName": "栏目管理",
+    "icon": "icon-neirongguanli-lanmuguanli"
   },
   "commentManager": {
     "index": "3",
