@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Layout, Menu, Icon, Breadcrumb, Divider } from 'antd';
-import { Route, Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Layout, Menu, Icon, Breadcrumb, Divider} from 'antd';
+import {Route, Link} from 'react-router-dom';
 
-import { SCRIPTURL, MENULIST } from '../../common/constant';
-import { loading } from '../../components/Util';
+import {SCRIPTURL, MENULIST} from '../../common/constant';
+import {loading} from '../../components/Util';
 import CustomHeader from '../../components/CustomHeader';
 import CustomFooter from '../../components/CustomFooter';
 
-import './index.less'
+import './index.less';
 
-const { Content, Sider } = Layout;
+const {Content, Sider} = Layout;
 const IconFont = Icon.createFromIconfontCN({
   scriptUrl: SCRIPTURL,
 });
@@ -17,27 +17,29 @@ const IconFont = Icon.createFromIconfontCN({
 /**
  * 获取当前显示内容对应的菜单序号
  *
- * @returns
+ * @return {string}
  */
-const getCurrentMenuKey = () => {
-  let key = window.location.pathname.split('/')[1];
-  return key === "" ? Object.keys(MENULIST)[0] : key;
-}
+const getCurrentMenuKey = (): string => {
+  const key = window.location.pathname.split('/')[1];
+  return key === '' ? Object.keys(MENULIST)[0] : key;
+};
 interface Props {
-  match: { url: string }
+  match: { url: string };
 }
 
 const DefaultLayout: React.FC<Props> = (props: Props) => {
-  const { match } = props;
+  const {match} = props;
   const [menuKey, setMenuKey] = useState(getCurrentMenuKey());
 
   // 面包屑
   const CurrentBreadcrumb = <Breadcrumb>
-    <Breadcrumb.Item onClick={() => { setMenuKey(Object.keys(MENULIST)[0]) }}>
+    <Breadcrumb.Item onClick={(): void => {
+      setMenuKey(Object.keys(MENULIST)[0]);
+    }}>
       <Link to='/'>首页</Link>
     </Breadcrumb.Item>
     <Breadcrumb.Item>{MENULIST[menuKey].cName}</Breadcrumb.Item>
-  </Breadcrumb>
+  </Breadcrumb>;
 
   return (
     <Layout id="defaultLayout">
@@ -46,9 +48,6 @@ const DefaultLayout: React.FC<Props> = (props: Props) => {
         <Sider
           breakpoint="lg"
           collapsedWidth="0"
-          onCollapse={(collapsed, type) => {
-            console.log(collapsed, type);
-          }}
         >
           <div className="logo">
             <img src="/user.jpeg" alt='' />
@@ -57,8 +56,8 @@ const DefaultLayout: React.FC<Props> = (props: Props) => {
             theme="dark"
             mode="inline"
             selectedKeys={[menuKey]}
-            onClick={({ key }) => {
-              setMenuKey(key)
+            onClick={({key}): void => {
+              setMenuKey(key);
             }}
           >
             {
@@ -75,7 +74,7 @@ const DefaultLayout: React.FC<Props> = (props: Props) => {
         </Sider>
         <Content>
           {CurrentBreadcrumb}
-          <Divider style={{ margin: '10px 0' }} />
+          <Divider style={{margin: '10px 0'}} />
           <div className="mainCon">
             {
               Object.keys(MENULIST).map((key: string) => {
@@ -86,7 +85,7 @@ const DefaultLayout: React.FC<Props> = (props: Props) => {
                   path={path}
                   component={comp}
                   exact
-                />
+                />;
               })
             }
           </div>
@@ -94,8 +93,8 @@ const DefaultLayout: React.FC<Props> = (props: Props) => {
       </Layout>
       <CustomFooter />
     </Layout>
-  )
-}
+  );
+};
 
 export default DefaultLayout;
 

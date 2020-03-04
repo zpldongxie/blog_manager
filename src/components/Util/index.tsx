@@ -1,31 +1,32 @@
+/* eslint-disable new-cap */
 import React from 'react';
 import Loadable from 'react-loadable';
-import { Modal, message } from 'antd';
+import {Modal, message} from 'antd';
 
 /**
  * 通用的过场组件
  *
- * @returns
+ * @return {any}
  */
 const LoadingComponent: React.FC = () => {
   return (
-      <div>loading...</div>
-  ) 
-}
+    <div>loading...</div>
+  );
+};
 
 /**
  * 动态加载组件，过场组件默认采用通用的，若传入了loading，则采用传入的过场组件
  *
  * @param {*} loader
  * @param {*} [loading=LoadingComponent]
- * @returns
+ * @return {any}
  */
-const loading = (loader: any, loading = LoadingComponent) => {
+function loading(loader: any, loading = LoadingComponent) {
   return Loadable({
     loader,
-    loading
+    loading,
   });
-}
+};
 
 /**
  * 全局显示成功信息
@@ -40,16 +41,12 @@ const showInfo = message.info;
  */
 const showError = message.error;
 
-const { confirm } = Modal;
+const {confirm} = Modal;
 
 /**
  * 删除确认提示
  *
- * @param {{
- *   title?: string,
- *   content?: string,
- *   okAction?: Function
- * }} [opt={}]
+ * @param {*} [opt={}]
  */
 const showDeleteConfirm = (opt: {
   title?: string,
@@ -70,13 +67,13 @@ const showDeleteConfirm = (opt: {
       console.log('Cancel');
     },
   });
-}
+};
 
 export {
   loading,
   showSuccess,
   showInfo,
   showError,
-  showDeleteConfirm
+  showDeleteConfirm,
 };
 

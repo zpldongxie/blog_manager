@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import LoginUser from './layouts/Login';
-import DefaultLayout from './layouts/Default'
+import DefaultLayout from './layouts/Default';
 
 import './App.css';
 
@@ -16,6 +16,6 @@ const App: React.FC = () => {
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
