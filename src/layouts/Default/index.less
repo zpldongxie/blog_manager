@@ -11,34 +11,22 @@
   .ant-layout-sider {
     opacity: .9;
 
-    .logo {
-      background   : rgba(255, 255, 255, 0.2);
-      margin       : 2rem 1rem 1rem;
-      border       : 4px solid rgb(91, 212, 145);
-      border-radius: 100%;
-      overflow     : hidden;
+    .ant-layout-sider-children {
+      height    : calc(100vh - @headerHeight - @footerHeight);
+      overflow-y: auto;
 
-      img {
-        width: 100%;
-      }
-    }
+      .logo {
+        background   : rgba(255, 255, 255, 0.2);
+        margin       : 2rem 2rem 1rem;
+        border       : 4px solid rgb(91, 212, 145);
+        border-radius: 100%;
+        overflow     : hidden;
 
-    .ant-menu {
-      .ant-menu-item {
-        .anticon {
-          font-size     : 1.4rem;
-          vertical-align: middle;
-        }
-
-        .nav-text {
-          vertical-align: middle;
+        img {
+          width: 100%;
         }
       }
     }
-
-    // .ant-layout-sider-zero-width-trigger {
-    //   top: 0;
-    // }
   }
 
 
@@ -46,6 +34,7 @@
     height          : calc(100vh - @headerHeight - @footerHeight);
     background-color: #fff;
     padding         : 1rem;
+
     .mainCon {
       padding: 0 1rem;
     }

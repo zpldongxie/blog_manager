@@ -1,9 +1,9 @@
 /*
- * @description: 
+ * @description: http请求封装
  * @author: zpl
  * @Date: 2020-01-13 14:09:12
- * @LastEditTime : 2020-01-13 14:52:00
- * @LastEditors  : zpl
+ * @LastEditTime: 2020-03-05 10:41:19
+ * @LastEditors: zpl
  */
 import axios from 'axios';
 import api from '../common/api';
@@ -16,21 +16,21 @@ const service = axios.create({
 
 // request拦截器 axios的一些配置
 service.interceptors.request.use(
-  (config) => config,
-  (error) => {
+    (config) => config,
+    (error) => {
     // Do something with request error
-    console.error('error:', error); // for debug
-    Promise.reject(error);
-  },
+      console.error('error:', error); // for debug
+      Promise.reject(error);
+    },
 );
 
 // respone拦截器 axios的一些配置
 service.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    console.error(`error:${error}`); // for debug
-    return Promise.reject(error);
-  },
+    (response) => response,
+    (error) => {
+      console.error(`error:${error}`); // for debug
+      return Promise.reject(error);
+    },
 );
 
-export default { ...service };
+export default {...service};
