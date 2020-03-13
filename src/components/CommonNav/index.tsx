@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Menu, Icon} from 'antd';
 import {Link} from 'react-router-dom';
 
 import {SCRIPTURL, COMMON_MENU_LIST} from '../../common/constant';
+import NavContext from '../../layouts/Default/nav.store';
 import './index.less';
 
 const {SubMenu} = Menu;
@@ -10,44 +11,26 @@ const IconFont = Icon.createFromIconfontCN({
   scriptUrl: SCRIPTURL,
 });
 
-/**
- * 获取当前显示内容对应的菜单序号
- *
- * @param {string} [link]
- * @return {[string, string]}
- */
-const getCurrentMenuKey = (link?: string): [string, string] => {
-  const name = link || window.location.pathname.split('/')[1];
-  let keyOne: string = COMMON_MENU_LIST[0].key;
-  let keyTow = '';
-  COMMON_MENU_LIST.some((menu) => {
-    if (menu.link === name) {
-      keyOne = menu.key;
-      return true;
-    } else if (menu.children && menu.children.length) {
-      const subItem = menu.children.find((subMenu) => {
-        return subMenu.link === name;
-      });
-      if (subItem) {
-        keyOne = menu.key;
-        keyTow = subItem.key;
-        return true;
-      }
-    }
-    return false;
-  });
-
-  return [keyOne, keyTow];
-};
-
 const CommonNav: React.SFC<{}> = () => {
-  const [menuKey] = useState(getCurrentMenuKey());
+  const {
+    state: {
+      keyPath,
+      defaultSelectedKeys,
+      defaultOpenKeys,
+    },
+    dispatch = (): void =>{
+      // do something
+    },
+  } = useContext(NavContext);
 
   return <Menu
     theme="dark"
     mode="inline"
-    defaultSelectedKeys={[menuKey[1] || menuKey[0]]}
-    defaultOpenKeys={[menuKey[1] ? menuKey[0] : '']}
+    defaultSelectedKeys={keyPath.length ? [keyPath[0]] : defaultSelectedKeys}
+    defaultOpenKeys={keyPath.length > 1 ? [keyPath[1]] : defaultOpenKeys}
+    onClick={(item): void=>{
+      dispatch({type: 'change', keyPath: item.keyPath});
+    }}
   >
     {
       COMMON_MENU_LIST.map((menu) => {

@@ -1,77 +1,67 @@
-/**!
+/** !
  * @description: 用户管理
  * @author: zpl
  * @Date: 2020-01-16 12:20:36
- * @LastEditTime: 2020-02-20 18:07:44
+ * @LastEditTime: 2020-03-06 16:07:01
  * @LastEditors: zpl
  */
-import React, { useState, useEffect } from 'react';
-import { Table } from 'antd';
+import React, {useState, useEffect} from 'react';
+import {Table} from 'antd';
 
-import { sex, role } from '../../common/dictionary';
+import UserInfo from './user.interface';
 import api from '../../common/api';
 import https from '../../utils/https';
 
-interface UserInfo {
-  _id: string,
-  userName: string,
-  name: string,
-  sex: sex,
-  mobilePhone: string,
-  role: role,
-  email: string
-}
-
-const UserManager = () => {
+const UserManager: React.FC = () => {
   const pageSize = 2;
   const pageIndex = 1;
-  const [userList, setUserList] = useState([]);
+  const [userList, setUserList] = useState<UserInfo[]>([]);
+
+  const getUserList = (): void => {
+    https.get(api.getUsers).then((res) => {
+      setUserList(res.data);
+    });
+  };
 
   useEffect(() => {
     getUserList();
   }, []);
 
-  const getUserList = () => {
-    https.get(api.getUsers).then((res) => {
-      setUserList(res.data);
-    });
-  }
-
   const columns = [
     {
       dataIndex: '_id',
       key: '_id',
-      render: () => '',
+      render: (): string => '',
     },
     {
       title: '登录名',
       dataIndex: 'userName',
-      key: 'userName'
+      key: 'userName',
     },
     {
       title: '姓名',
       dataIndex: 'name',
-      key: 'name'
+      key: 'name',
     },
     {
       title: '性别',
       dataIndex: 'sex',
-      key: 'sex'
+      key: 'sex',
     },
     {
       title: '手机号码',
       dataIndex: 'mobilePhone',
-      key: 'mobilePhone'
+      key: 'mobilePhone',
     },
     {
       title: '权限',
       dataIndex: 'role',
-      key: 'role'
+      key: 'role',
     },
     {
       title: '邮箱',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
     },
   ];
 
@@ -81,14 +71,19 @@ const UserManager = () => {
     total: userList.length,
     hideOnSinglePage: true,
     showQuickJumper: true,
-    showSizeChanger: true
-  }
+    showSizeChanger: true,
+  };
 
   return (
     <div>
-      <Table columns={columns} dataSource={userList} pagination={pagination} />
+      <Table
+        rowKey={(record: UserInfo): string => record._id || ''}
+        columns={columns}
+        dataSource={userList}
+        pagination={pagination}
+      />
     </div>
-  )
-}
+  );
+};
 
 export default UserManager;

@@ -1,8 +1,8 @@
-/**!
+/** !
  * @description: 分类/标签管理
  * @author: zpl
  * @Date: 2020-01-16 12:20:36
- * @LastEditTime: 2020-02-21 19:43:17
+ * @LastEditTime: 2020-03-05 12:11:27
  * @LastEditors: zpl
  */
 import React from 'react';
@@ -11,7 +11,6 @@ import api from '../../common/api';
 import Group from './Group';
 
 const LableManager: React.FC = () => {
-
   return (
     <div>
       <Group
@@ -24,7 +23,7 @@ const LableManager: React.FC = () => {
         changeColorUrl={api.changeTypeColorUrl}
       />
       <Group
-        title='标签'        
+        title='标签'
         getAllUrl={api.getAllLables}
         addUrl={api.addLable}
         delOneUrl={api.delOneLable}
@@ -32,7 +31,7 @@ const LableManager: React.FC = () => {
         changeColorUrl={api.changeLableColorUrl}
       />
     </div>
-  )
-}
+  );
+};
 
 export default LableManager;
