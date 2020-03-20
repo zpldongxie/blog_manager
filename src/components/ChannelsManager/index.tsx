@@ -5,13 +5,19 @@
  * @LastEditTime: 2020-03-06 08:43:17
  * @LastEditors: zpl
  */
-import React from 'react';
-import {Collapse, Row, Col, Button, Icon, Tooltip} from 'antd';
+import React, {useState} from 'react';
+import {Row, Col, Button, Tooltip} from 'antd';
+import {AxiosResponse} from 'axios';
 
+import api from '../../common/api';
+import https from '../../utils/https';
+import {showError} from '../Util';
 import Channel from './Channel';
 import ChannelProps from './channel.interfice';
 
 const ChannelsManager: React.FC = () => {
+  const [openState, setOpenState] = useState<'open'|'close'|'default'>('default');
+  const [openIcon, setOpenIcon] = useState<'fullscreen' | 'fullscreen-exit'>('fullscreen');
   const testData: ChannelProps[] = [{
     id: '1',
     title: '技术分享',
@@ -77,12 +83,29 @@ const ChannelsManager: React.FC = () => {
     ],
   }];
 
+  const addChannel = () => {
+    https.post(api.addChannel, {name: '', color: ''}).then((res: AxiosResponse<unknown>) => {
+      if (res.status === 201) {
+        // getList();
+      } else {
+        showError(`新增失败。`);
+      }
+    }).catch((err) => {
+      showError(`新增失败。${JSON.stringify(err.response.data.message[0].constraints)}`);
+    });
+  };
+
   return (
     <div>
       <Row type="flex">
-        <Col><Tooltip title="全部展开"><Button type="link" icon="fullscreen" /></Tooltip></Col>
+        <Col><Tooltip title={openIcon === 'fullscreen' ? '全部展开' : '全部收起'}>
+          <Button icon={openIcon} onClick={(): void => {
+            setOpenState(openIcon === 'fullscreen' ? 'open' : 'close');
+            setOpenIcon(openIcon === 'fullscreen' ? 'fullscreen-exit' : 'fullscreen');
+          }} />
+        </Tooltip></Col>
       </Row>
-      <Channel channels={testData} />
+      <Channel id='-1.' list={testData} openState={openState} setOpenState = {setOpenState}/>
     </div>
   );
 };

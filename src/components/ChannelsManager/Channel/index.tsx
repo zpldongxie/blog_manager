@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-03-05 17:30:06
  * @LastEditors: zpl
  */
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Collapse, Empty, Button, Icon, Row, Col} from 'antd';
 
 import ChannelProps from '../channel.interfice';
@@ -13,15 +13,62 @@ import './index.less';
 
 const {Panel} = Collapse;
 
-const Channel: React.SFC<{ channels: ChannelProps[] }> = (props) => {
-  const {channels = []} = props;
+/**
+ * 折叠面板二次封装，openState为default时不控制展开状态
+ *
+ * @param {*} props
+ * @return {void}
+ */
+const CurrentCollapse: React.SFC<{
+  openState: string;
+  activeKey: string[]|string| number[]|number;
+}> = (props) => {
+  const {
+    openState,
+    activeKey,
+    children,
+  } = props;
 
-  if (channels.length) {
+  if (openState === 'default') {
+    return <Collapse>{children}</Collapse>;
+  }
+  return <Collapse activeKey={openState==='open' ? activeKey : ''}>{children}</Collapse>;
+};
+
+/**
+ * 封装面板
+ *
+ * @param {*} props
+ * @return {void}
+ */
+const Channel: React.SFC<{
+  id: string;
+  list: ChannelProps[];
+  openState: 'open'|'close'|'default';
+  setOpenState: Function;
+}> = (props) => {
+  const {
+    id,
+    list = [],
+    openState,
+    setOpenState,
+  } = props;
+
+  useEffect(() => {
+    setOpenState('default');
+  }, [openState]);
+
+  if (list.length) {
+    const childrenKeys = list.map((channel) => channel.id);
+
     return (
       <div>
-        <Collapse>
+        <CurrentCollapse
+          activeKey={childrenKeys}
+          openState={openState}
+        >
           {
-            channels.map((channel: ChannelProps) => {
+            list.map((channel: ChannelProps) => {
               const {
                 id,
                 title,
@@ -46,7 +93,12 @@ const Channel: React.SFC<{ channels: ChannelProps[] }> = (props) => {
                     showArrow={children.length > 0}
                     className={`channel-${level}`}
                   >
-                    {children.length ? <Channel channels={children} /> : ''}
+                    {children.length ? <Channel
+                      id={id}
+                      list={children}
+                      openState={openState}
+                      setOpenState={setOpenState}
+                    /> : ''}
                   </Panel>
                 );
               } else {
@@ -58,7 +110,7 @@ const Channel: React.SFC<{ channels: ChannelProps[] }> = (props) => {
               }
             })
           }
-        </Collapse>
+        </CurrentCollapse>
         <Row type="flex" justify="end">
           <Col>
             <Button type="link"><Icon type="plus" />新增栏目</Button>

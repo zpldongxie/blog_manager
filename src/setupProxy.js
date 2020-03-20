@@ -2,8 +2,8 @@
  * @description: 设置反向代理
  * @author: zpl
  * @Date: 2019-12-04 10:52:57
- * @LastEditTime : 2020-01-18 17:31:57
- * @LastEditors  : zpl
+ * @LastEditTime: 2020-03-17 16:42:16
+ * @LastEditors: zpl
  */
 const proxy = require('http-proxy-middleware');
 
@@ -22,7 +22,7 @@ module.exports = (app) => {
   }));
 
   app.use(proxy('/api', {
-    target: 'http://39.105.69.209:3000',
+    target: 'http://49.234.158.74:3000',
     changeOrigin: true,
     pathRewrite: {
       '^/api': '/',

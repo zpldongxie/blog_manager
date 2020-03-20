@@ -21,7 +21,7 @@ const LoadingComponent: React.FC = () => {
  * @param {*} [loading=LoadingComponent]
  * @return {any}
  */
-function loading(loader: any, loading = LoadingComponent) {
+function loading(loader: any, loading = LoadingComponent): any {
   return Loadable({
     loader,
     loading,
@@ -49,9 +49,9 @@ const {confirm} = Modal;
  * @param {*} [opt={}]
  */
 const showDeleteConfirm = (opt: {
-  title?: string,
-  content?: string,
-  okAction?: Function
+  title?: string;
+  content?: string;
+  okAction?: Function;
 } = {}) => {
   confirm({
     title: opt.title || '确定要删除吗？',

@@ -2,13 +2,13 @@
  * @description: 统一配置请求接口
  * @author: zpl
  * @Date: 2020-01-13 14:11:20
- * @LastEditTime: 2020-02-21 19:42:46
+ * @LastEditTime: 2020-03-16 14:09:02
  * @LastEditors: zpl
  */
 
 let baseUrl = '/api';
 console.log(`process.env: ${JSON.stringify(process.env)}`);
-if(process.env.REACT_APP_ENV === 'development'){
+if (process.env.REACT_APP_ENV === 'development') {
   baseUrl = '/mock/api';
 }
 
@@ -28,5 +28,8 @@ export default {
   addLable: '/lable',
   delOneLable: '/lable',
   changeLableNameUrl: '/lable/changeName',
-  changeLableColorUrl: '/lable/changeColor'
+  changeLableColorUrl: '/lable/changeColor',
+  getAllChannels: '/channels',
+  addChannel: '/channel',
+  delOneChannel: '/channels',
 };

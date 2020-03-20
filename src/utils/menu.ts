@@ -2,7 +2,7 @@
  * @description: 菜单相关方法
  * @author: zpl
  * @Date: 2020-03-05 11:36:28
- * @LastEditTime: 2020-03-13 11:26:06
+ * @LastEditTime: 2020-03-16 12:30:49
  * @LastEditors: zpl
  */
 import {COMMON_MENU_LIST} from '../common/constant';
@@ -79,7 +79,7 @@ const findByKey = (key: string, list?: MenuInfo[]): MenuInfo | undefined => {
   const currentList = list || COMMON_MENU_LIST;
   let returnItem: MenuInfo | undefined;
   const finded = currentList.some((item) => {
-    if (item.key == key) {
+    if (item.key === key) {
       returnItem = item;
       return true;
     } else if (item.children && item.children.length) {
