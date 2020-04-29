@@ -40,7 +40,6 @@ const DefaultLayout: React.FC<Props> = (props: Props) => {
   const {match} = props;
   const [state, dispatch] = useReducer(reducer, useContext(NavContext).state);
   const menuPathArr = convertByKeyPath(state.keyPath);
-  console.log('DefaultLayout++++++++++'+state.keyPath);
 
   return (
     <Layout id="defaultLayout">

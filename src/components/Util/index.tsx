@@ -52,7 +52,7 @@ const showDeleteConfirm = (opt: {
   title?: string;
   content?: string;
   okAction?: Function;
-} = {}) => {
+} = {}): void => {
   confirm({
     title: opt.title || '确定要删除吗？',
     content: opt.content || '',

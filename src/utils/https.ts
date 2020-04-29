@@ -2,7 +2,7 @@
  * @description: http请求封装
  * @author: zpl
  * @Date: 2020-01-13 14:09:12
- * @LastEditTime: 2020-03-05 10:41:19
+ * @LastEditTime: 2020-04-03 10:04:43
  * @LastEditors: zpl
  */
 import axios from 'axios';

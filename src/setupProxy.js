@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /*
  * @description: 设置反向代理
  * @author: zpl
  * @Date: 2019-12-04 10:52:57
- * @LastEditTime: 2020-03-17 16:42:16
+ * @LastEditTime: 2020-04-03 10:01:33
  * @LastEditors: zpl
  */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const proxy = require('http-proxy-middleware');
 
 /**

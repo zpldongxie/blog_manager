@@ -48,7 +48,6 @@ const Channel: React.SFC<{
   setOpenState: Function;
 }> = (props) => {
   const {
-    id,
     list = [],
     openState,
     setOpenState,
